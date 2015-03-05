@@ -1,0 +1,35 @@
+dir /dev 755 0 0
+dir /sbin 755 0 0
+dir /bin 755 0 0
+dir /usr 755 0 0
+dir /usr/sbin 755 0 0
+dir /usr/bin 755 0 0
+dir /etc 755 0 0
+dir /var 755 0 0
+dir /tmp 755 0 0
+dir /proc 755 0 0
+dir /sys 755 0 0
+dir /etc/init.d 755 0 0
+nod /dev/console 777 0 0 c 5 1
+file /bin/busybox busybox 755 0 0
+file /usr/bin/helloWorld Application/src/helloWorld 755 0 0
+file /etc/inittab Application/shellScript/inittab 755 0 0
+file /etc/init.d/rcS Application/shellScript/mountDevice.sh 755 0 0
+slink /bin/sh busybox 777 0 0
+slink /bin/mount busybox 777 0 0
+slink /init /bin/busybox 777 0 0
+slink /bin/dmesg busybox 777 0 0
+slink /bin/mdev busybox 777 0 0
+slink /bin/ls busybox 777 0 0
+slink /bin/vi busybox 777 0 0
+slink /bin/cat busybox 777 0 0
+slink /bin/ps busybox 777 0 0
+slink /bin/chmod busybox 777 0 0
+slink /bin/top busybox 777 0 0
+slink /bin/cp busybox 777 0 0
+slink /bin/mv busybox 777 0 0
+slink /bin/rm busybox 777 0 0
+slink /bin/kill busybox 777 0 0
+
+
+
