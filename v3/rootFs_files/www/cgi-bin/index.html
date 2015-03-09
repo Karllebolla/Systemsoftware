@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ARM Embedded Linux</title>
+	        <link href="jquery-ui/css/hot-sneaks/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+	        <script src="jquery-ui/js/jquery-1.9.1.js"></script>
+        	<script src="jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+		<script>
+			$(function() {
+				$("#menu").tabs({
+					show: true,
+					heightStyle: "content"
+				});
+				$("#reboot").button({
+						icons: {primary: "ui-icon-power"}
+				}).click(reboot_click);
+				$("#deltmp").button({
+                                                icons: {primary: "ui-icon-trash"}
+                                }).click(deltmp_click);
+				$("#led_toggle").button({
+                                                icons: {primary: "ui-icon-lightbulb"}
+                                }).click(led_toggle_click);
+				$("#btn_toggle").button({
+                                                icons: {primary: "ui-icon-circle-arrow-s"}
+                                }).click(btn_toggle_click);
+				uptime_refresh();
+				setInterval(uptime_refresh, 1000);
+				status_refresh();
+				setInterval(status_refresh, 1000);
+				led_refresh();
+                                setInterval(led_refresh, 1000);
+				btn_refresh();
+                                setInterval(btn_refresh, 1000);
+
+				drawCircle(document.getElementById("led_status"), "grey");
+				drawCircle(document.getElementById("btn_status"), "grey");
+			});
+			
+			function deltmp_click(event) {
+				$.ajax({
+                                        type:"post",
+                                        url:"cgi-bin/deltmp",
+                                        success:function() {
+                                                alert("Deleted tmp files.");
+                                        }
+                                });
+			}
+
+			function reboot_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/reboot",
+    					complete:function() {
+						alert("Rebooting...");
+					}
+				});
+			}
+
+			function led_toggle_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/led_toggle",
+    					complete:function() {
+						//alert("");
+					}
+				});
+			}
+
+			function btn_toggle_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/btn_toggle",
+    					complete:function() {
+						//alert("");
+					}
+				});
+			}
+
+			function uptime_refresh() {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/uptime",
+    					success:function(data) {
+						$("#uptime").html(data);
+					}
+				});
+			}
+
+			function status_refresh() {
+				$.ajax({
+                                        type:"post",
+                                        url:"cgi-bin/status",
+                                        success:function(data) {
+                                                $("#status").html(data);
+                                        }
+                                });
+			}
+
+			function led_refresh() {
+				$.ajax({
+                                        type:"post",
+                                        url:"cgi-bin/led_status",
+                                        success:function(data) {
+						if ($.trim(data) == "on") {
+							drawCircle(
+								document.getElementById("led_status"),
+								"green");	
+						} else if ($.trim(data) == "off") {
+							drawCircle(
+								document.getElementById("led_status"),
+								"red");	
+						} else
+							drawCircle(
+                                                                document.getElementById("led_status"),
+                                                                "grey");
+                                        }
+                                });
+			}
+
+			function btn_refresh() {
+				$.ajax({
+                                        type:"post",
+                                        url:"cgi-bin/btn_status",
+                                        success:function(data) {
+						if ($.trim(data) == "pressed") {
+							drawCircle(
+								document.getElementById("btn_status"),
+								"green");	
+						} else if ($.trim(data) == "released") {
+							drawCircle(
+								document.getElementById("btn_status"),
+								"red");	
+						} else
+							drawCircle(
+								document.getElementById("btn_status"),
+								"grey");	
+                                        }
+                                });
+			}
+
+			function drawCircle(element, color) {
+				var c = element;
+				var ctx=c.getContext("2d");
+				ctx.fillStyle=color;
+				ctx.fillRect(5,15,150,100);
+			}
+		</script>
+		<style>
+			body {
+				margin-left:auto;
+				margin-right:auto;
+				width:90%;
+				background-color:#CEE3F6;
+			}
+			#uptime {	
+				text-align:center;
+				color:black;
+				border:2px solid;
+				border-radius:10px;
+			}
+			#status {
+				border:1px solid;
+				border-radius:10px;
+				margin-top:10px;
+				margin-bottom:10px;
+				margin-right:10px;
+				margin-left:10px;
+			}
+		</style>
+   	</head>
+	<body>
+		<div id="menu">
+			<ul>
+				<li><a href="cgi-bin/osinfo">OS Info</a></li>
+				<li><a href="cgi-bin/sysinfo">System Info</a></li>
+				<li><a href="cgi-bin/netinfo">Network Info</a></li>
+				<li><a href="#status">Status</a></li>
+				<li><a href="#action">Actions</a></li>
+				<li><a href="#gpio_control">GPIO-Control</a></li>
+			</ul>
+			<div id="action">
+				<button id="reboot">Reboot</button>
+				<button id="deltmp">Delete tmp files</button>
+			</div>
+			<div id="status"></div>
+			<div id="gpio_control">
+				<button id="led_toggle">Toggle LED</button>
+				<canvas id="led_status" width="40" height="40">
+					Your browser does not support the HTML5 canvas tag.
+				</canvas>
+				<br />
+				<button id="btn_toggle">Toggle Button</button>	
+				<canvas id="btn_status" width="40" height="40">
+					Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+		</div>
+		<br />
+		<div id="uptime"></div>
+	</body>
+</html>

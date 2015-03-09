@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ARM Embedded Linux</title>
+	        <link href="jquery-ui/css/hot-sneaks/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+	        <script src="jquery-ui/js/jquery-1.9.1.js"></script>
+        	<script src="jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+		<script>
+			$(function() {
+				$("#menu").tabs({
+					show: true,
+					heightStyle: "content",
+					
+				});
+				$("#reboot").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(reboot_click);
+				$("#deltmp").button({
+					icons: {primary: "ui-icon-trash"}
+                }).click(deltmp_click);
+                $("#load_modules").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(load_test_click);
+				$("#tasklet").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(tasklet_click);								
+				$("#timer").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(timer_click);				
+				$("#kernelThread").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(kernelThread_click);
+				$("#workqueue").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(workqueue_click);
+				$("#sema").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(sema_click);
+				$("#mutex").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(mutex_click);
+				$("#buffer_blocking").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(buffer_blocking_click);				
+				$("#unload_modules").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(unload_test_click);
+				$("#led250").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(led250_click);
+				$("#ledflip").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(ledflip_click);
+				$("#led250_close").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(led250_close_click);
+				$("#ledflip_close").button({
+					icons: {primary: "ui-icon-power"}
+				}).click(ledflip_close_click);
+
+				uptime_refresh();
+				setInterval(uptime_refresh, 1000);
+				status_refresh();
+				setInterval(status_refresh, 1000);
+			});
+			
+			function ledflip_close_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/ledflip_close.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+
+			function led250_close_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/led250_close.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+
+			function led250_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/led250.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+
+			function ledflip_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/ledflip.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+
+			function tasklet_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/tasklet.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function timer_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/timer.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function kernelThread_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/kernelThread.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function workqueue_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/wq.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function sema_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/sema.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function mutex_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/mutex.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function buffer_blocking_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/buffer_blocking.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+						
+			function deltmp_click(event) {
+				$.ajax({
+					type:"post",
+						url:"cgi-bin/deltmp.sh",
+							success:function() {
+								alert("Deleted tmp files.");
+                                        }
+                                });
+			}
+
+			function reboot_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/reboot.sh",
+    					complete:function() {
+						alert("Rebooting...");
+					}
+				});
+			}
+			
+			function load_test_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/load.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+			
+			function unload_test_click(event) {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/unload.sh",
+    					success:function(data) {
+						$("#driverOutput").html(data);
+					}
+				});
+			}
+
+			function uptime_refresh() {
+				$.ajax({
+    					type:"post",
+    					url:"cgi-bin/uptime.sh",
+    					success:function(data) {
+						$("#uptime").html(data);
+					}
+				});
+			}
+
+			function status_refresh() {
+				$.ajax({
+                                        type:"post",
+                                        url:"cgi-bin/status.sh",
+                                        success:function(data) {
+                                                $("#status").html(data);
+                                        }
+                                });
+			}
+				
+		</script>
+		<style>
+			body {
+				margin-left:auto;
+				margin-right:auto;
+				width:90%;
+				background-color:#000000;
+			}
+			#menu {
+				color:red;
+			}
+			#uptime {	
+				text-align:center;
+				color:white;
+				border:2px solid;
+				border-radius:10px;
+			}
+			#test {
+				text-align:center;
+				color:black;
+				border:2px solid;
+				border-radius:10px;
+			}
+			#status {
+				border:1px solid;
+				border-radius:10px;
+				margin-top:10px;
+				margin-bottom:10px;
+				margin-right:10px;
+				margin-left:10px;
+			}
+		</style>
+   	</head>
+	<body>
+		<div id="menu">
+			<ul>
+				<li><a href="cgi-bin/osinfo.sh">OS Info</a></li>
+				<li><a href="cgi-bin/sysinfo.sh">System Info</a></li>
+				<li><a href="cgi-bin/netinfo.sh">Network Info</a></li>
+				<li><a href="#status">Status</a></li>
+				<li><a href="#action">Actions</a></li>
+				<li><a href="#gpio_controll">GPIO-Controll</a></li>
+				<li><a href="#modules">Modules</a></li>
+			</ul>
+			<div id="action">
+				<button id="reboot">Reboot</button>
+				<button id="deltmp">Delete tmp files</button>
+			</div>
+			<div id="status"></div>
+			<div id="modules">
+				<div id="v5">
+				<button id="load_modules">Load Modules</button>
+				<button id="tasklet">Tasklet</button>
+				<button id="timer">Timer</button>
+				<button id="kernelThread">Kernel Thread</button>
+				<button id="workqueue">Workqueue</button>
+				<button id="sema">Semaphore</button>
+				<button id="mutex">Mutex</button>
+				<button id="buffer_blocking">Buffer</button>
+				<button id="unload_modules">Unload Modules</button>
+				<button id="led250">LED250</button>
+				<button id="ledflip">LEDFLIP</button>
+				<button id="led250_close">Close LED250</button>
+				<button id="ledflip_close">Close LEDFLIP</button>
+				</div>
+				<div id="driverOutput"></div>
+			</div>
+			<div id="gpio_controll">
+				<button id="led_toggle">Toggle LED</button>
+				<canvas id="led_status" width="40" height="40">
+					FAIL no canvas support
+				</canvas>
+				<br />
+				<button id="btn_toggle">Toggle Button</button>
+				<canvas id="btn_status" width="40" height="40">
+					FAIL no canvas support
+				</canvas>
+			</div>
+		</div>
+		<br />
+		
+		<div id="uptime"></div>
+	</body>
+</html>

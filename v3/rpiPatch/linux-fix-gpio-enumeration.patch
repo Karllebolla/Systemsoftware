@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta content='GitLab Community Edition' name='description'>
+<title>
+syso_ws1415_skeleton/v3/linux-fix-gpio-enumeration.patch at master - SYSO_WS1415 / SYSO_WS1415_skeleton | 
+GitLab
+</title>
+<link href="/assets/favicon-baaa14bade1248aa6165e9d34e7d83c0.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<link href="/assets/application-73571cda686e7d86010f9b8bfc7011e6.css" media="all" rel="stylesheet" />
+<link href="/assets/print-1df3ea9b8ff148a6745321899e0cb213.css" media="print" rel="stylesheet" />
+<script src="/assets/application-5ad542bf6995c2d40719a914c59a0f44.js"></script>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="zb/kFbSOExN/qXyniFV2oDTEV6Q9WZTOhmhLQEIrSPE=" name="csrf-token" />
+<script type="text/javascript">
+//<![CDATA[
+window.gon={};gon.default_issues_tracker="gitlab";gon.api_version="v3";gon.relative_url_root="";gon.default_avatar_url="https://burns.in.htwg-konstanz.de/assets/no_avatar-adffbfe10d45b20495cd2a9b88974150.png";gon.current_user_id=37;gon.api_token="g8rqys3RgacQEAKiuiVB";
+//]]>
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+</head>
+
+<body class='ui_mars project' data-page='projects:blob:show' data-project-id='76'>
+
+<header class='navbar navbar-static-top navbar-gitlab'>
+<div class='navbar-inner'>
+<div class='container'>
+<div class='app_logo'>
+<span class='separator'></span>
+<a class="home has_bottom_tooltip" href="/" title="Dashboard"><h1>GITLAB</h1>
+</a><span class='separator'></span>
+</div>
+<h1 class='title'><span><a href="/groups/labworks-SYSO_WS1415">SYSO_WS1415</a> / SYSO_WS1415_skeleton</span></h1>
+<button class='navbar-toggle' data-target='.navbar-collapse' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<i class='icon-reorder'></i>
+</button>
+<div class='navbar-collapse collapse'>
+<ul class='nav navbar-nav'>
+<li class='hidden-sm hidden-xs'>
+<div class='search'>
+<form accept-charset="UTF-8" action="/search" class="navbar-form pull-left" method="get"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<input class="search-input" id="search" name="search" placeholder="Search in this project" type="search" />
+<input id="group_id" name="group_id" type="hidden" />
+<input id="project_id" name="project_id" type="hidden" value="76" />
+<input id="search_code" name="search_code" type="hidden" value="true" />
+<input id="repository_ref" name="repository_ref" type="hidden" value="master" />
+
+<div class='search-autocomplete-opts hide' data-autocomplete-path='/search/autocomplete' data-autocomplete-project-id='76' data-autocomplete-project-ref='master'></div>
+</form>
+
+</div>
+<script>
+  $('.search-input').on('keyup', function(e) {
+    if (e.keyCode == 27) {
+      $('.search-input').blur()
+    }
+  })
+</script>
+
+</li>
+<li class='visible-sm visible-xs'>
+<a class="has_bottom_tooltip" data-original-title="Search area" href="/search" title="Search"><i class='icon-search'></i>
+</a></li>
+<li>
+<a class="has_bottom_tooltip" data-original-title="Help" href="/help" title="Help"><i class='icon-question-sign'></i>
+</a></li>
+<li>
+<a class="has_bottom_tooltip" data-original-title="Public area" href="/explore" title="Explore"><i class='icon-globe'></i>
+</a></li>
+<li>
+<a class="has_bottom_tooltip" data-original-title="My snippets" href="/s/doriemel" title="My snippets"><i class='icon-paste'></i>
+</a></li>
+<li>
+<a class="has_bottom_tooltip" data-original-title="Profile settings&quot;" href="/profile" title="Profile settings"><i class='icon-user'></i>
+</a></li>
+<li>
+<a class="has_bottom_tooltip" data-method="delete" data-original-title="Logout" href="/users/sign_out" rel="nofollow" title="Logout"><i class='icon-signout'></i>
+</a></li>
+<li class='hidden-xs'>
+<a class="profile-pic" href="/u/doriemel" id="profile-pic"><img alt="User activity" src="https://secure.gravatar.com/avatar/e8cd1fa96280583a42b637ec16585867?s=26&amp;d=identicon" />
+</a></li>
+</ul>
+</div>
+</div>
+</div>
+</header>
+
+<script>
+  GitLab.GfmAutoComplete.dataSource = "/labworks-SYSO_WS1415/syso_ws1415_skeleton/autocomplete_sources?type=NilClass&type_id=master%2Fv3%2Flinux-fix-gpio-enumeration.patch"
+  GitLab.GfmAutoComplete.setup();
+</script>
+
+<div class='flash-container'>
+</div>
+
+
+<nav class='main-nav navbar-collapse collapse'>
+<div class='container'><ul class='project-navigation'>
+<li class="home"><a class="shortcuts-project" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton" title="Project">Project
+</a></li><li class="active"><a class="shortcuts-tree" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/tree/master">Files</a>
+</li><li class=""><a class="shortcuts-commits" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/commits/master">Commits</a>
+</li><li class=""><a class="shortcuts-network" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/network/master">Network</a>
+</li><li class=""><a class="shortcuts-graphs" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/graphs/master">Graphs</a>
+</li><li class=""><a class="shortcuts-issues" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/issues">Issues
+<span class='count issue_counter'>1</span>
+</a></li><li class=""><a class="shortcuts-wiki" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/wikis/home">Wiki</a>
+</li><li class=""><a class="shortcuts-snippets" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/snippets">Snippets</a>
+</li></ul>
+</div>
+</nav>
+<div class='container'>
+<div class='content'><div class='tree-ref-holder'>
+<form accept-charset="UTF-8" action="/labworks-SYSO_WS1415/syso_ws1415_skeleton/refs/switch" class="project-refs-form" method="get"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<select class="project-refs-select select2 select2-sm" id="ref" name="ref"><optgroup label="Branches"><option selected="selected" value="master">master</option></optgroup><optgroup label="Tags"></optgroup></select>
+<input id="destination" name="destination" type="hidden" value="blob" />
+<input id="path" name="path" type="hidden" value="v3/linux-fix-gpio-enumeration.patch" />
+</form>
+
+
+</div>
+<div class='tree-holder' id='tree-holder'>
+<ul class='breadcrumb repo-breadcrumb'>
+<li>
+<i class='icon-angle-right'></i>
+<a href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/tree/master">syso_ws1415_skeleton
+</a></li>
+<li>
+<a href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/tree/master/v3">v3</a>
+</li>
+<li>
+<a href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/blob/master/v3/linux-fix-gpio-enumeration.patch"><strong>
+linux-fix-gpio-enumeration.patch
+</strong>
+</a></li>
+</ul>
+<ul class='blob-commit-info bs-callout bs-callout-info hidden-xs'>
+<li class='commit js-toggle-container'>
+<div class='commit-row-title'>
+<a class="commit_short_id" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/commit/890bb3428bf8c9911a63ead4bdab7efb05cae6c2">890bb3428</a>
+&nbsp;
+<span class='str-truncated'>
+<a class="commit-row-message" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/commit/890bb3428bf8c9911a63ead4bdab7efb05cae6c2">Patch für den Linux Kernel der die Numierierung der GPIO Ports korrigiert. Diese&hellip;</a>
+<a class='text-expander js-toggle-button'>...</a>
+</span>
+<a class="pull-right" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/tree/890bb3428bf8c9911a63ead4bdab7efb05cae6c2">Browse Code »</a>
+<div class='notes_count'>
+</div>
+</div>
+<div class='commit-row-description js-toggle-content'>
+<pre>&hellip; wurdne ursprünglich von 202-255 gezählt statt 0-55.</pre>
+</div>
+<div class='commit-row-info'>
+<a class="commit-author-link has_tooltip" data-original-title="mail@stefanjunker.de" href="/u/stjunker"><img alt="" class="avatar s16" src="https://secure.gravatar.com/avatar/61db3a734c7d5497bb5df392356f4282?s=16&amp;d=identicon" width="16" /> <span class="commit-author-name">Stefan Junker</span></a>
+<div class='committed_ago'>
+<time class='time_ago' data-placement='top' data-toggle='tooltip' datetime='2014-11-19T16:57:00Z' title='Nov 19, 2014 5:57pm'>2014-11-19 17:57:00 +0100</time>
+<script>$('.time_ago').timeago().tooltip()</script>
+ &nbsp;
+</div>
+</div>
+</li>
+
+</ul>
+<div class='tree-content-holder' id='tree-content-holder'>
+<article class='file-holder'>
+<div class='file-title clearfix'>
+<i class='icon-file'></i>
+<span class='file_name'>
+linux-fix-gpio-enumeration.patch
+<small>342 Bytes</small>
+</span>
+<span class='options hidden-xs'><div class='btn-group tree-btn-group'>
+<span class='btn btn-small disabled'>edit</span>
+<a class="btn btn-small" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/raw/master/v3/linux-fix-gpio-enumeration.patch" target="_blank">raw</a>
+<a class="btn btn-small" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/blame/master/v3/linux-fix-gpio-enumeration.patch">blame</a>
+<a class="btn btn-small" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/commits/master/v3/linux-fix-gpio-enumeration.patch">history</a>
+<a class="btn btn-small" href="/labworks-SYSO_WS1415/syso_ws1415_skeleton/blob/890bb3428bf8c9911a63ead4bdab7efb05cae6c2/v3/linux-fix-gpio-enumeration.patch">permalink</a>
+</div>
+</span>
+</div>
+<div class='file-content code'>
+<div class='highlighted-data white'>
+<div class='line-numbers'>
+<a href="#L1" id="L1" rel="#L1"><i class='icon-link'></i>
+1
+</a><a href="#L2" id="L2" rel="#L2"><i class='icon-link'></i>
+2
+</a><a href="#L3" id="L3" rel="#L3"><i class='icon-link'></i>
+3
+</a><a href="#L4" id="L4" rel="#L4"><i class='icon-link'></i>
+4
+</a><a href="#L5" id="L5" rel="#L5"><i class='icon-link'></i>
+5
+</a><a href="#L6" id="L6" rel="#L6"><i class='icon-link'></i>
+6
+</a><a href="#L7" id="L7" rel="#L7"><i class='icon-link'></i>
+7
+</a><a href="#L8" id="L8" rel="#L8"><i class='icon-link'></i>
+8
+</a><a href="#L9" id="L9" rel="#L9"><i class='icon-link'></i>
+9
+</a><a href="#L10" id="L10" rel="#L10"><i class='icon-link'></i>
+10
+</a><a href="#L11" id="L11" rel="#L11"><i class='icon-link'></i>
+11
+</a></div>
+<div class='highlight'>
+<pre><code class='language-patch'>--- a/drivers/pinctrl/pinctrl-bcm2835.c	2014-11-19 17:43:41.000000000 +0100
++++ b/drivers/pinctrl/pinctrl-bcm2835.c	2014-11-19 17:42:41.000000000 +0100
+@@ -382,7 +382,7 @@
+ 	.get = bcm2835_gpio_get,
+ 	.set = bcm2835_gpio_set,
+ 	.to_irq = bcm2835_gpio_to_irq,
+-	.base = -1,
++	.base = 0,
+ 	.ngpio = BCM2835_NUM_GPIOS,
+ 	.can_sleep = false,
+ };
+</code></pre>
+</div>
+</div>
+
+</div>
+
+</article>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
