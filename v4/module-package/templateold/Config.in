@@ -1,0 +1,4 @@
+config BR2_PACKAGE_TEMPLATEOLD
+		bool "template old"
+		help
+		  Template Driver
