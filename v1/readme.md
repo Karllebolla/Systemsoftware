@@ -1,3 +1,18 @@
+# Lernziele
+
+Ziel dieser Aufgabe ist die Konfiguration eines Minimalen Linux 3.x Kernels für die x86 (i386) 32Bit Architektur,
+der mittels dem InitRamFS (RootFS) bootet und das Ausführen von Shell Parameters erlaubt. Das System wird im QEMU Emulator getestet.
+
+Wichtig ist, dass Sie wirklich ein Minimales System erstellen! Unter anderem werden Dateigröße sowie konfigurierte Parameter ausgewertet.
+
+## Folgende Themen werden erarbeitet:
+
+- GCC - GNU Compiler Collection
+- Linux Kernel Struktur
+- Linux Kernel Configuration
+- Root-FS Erstellung
+- Qemu Simulator
+
 # Fragen
 
 Wie können mit der x86_64 Variante von GCC Binärdateien für i386 erzeugt? 

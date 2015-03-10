@@ -1,3 +1,22 @@
+# Lernziele
+
+Ziel dieser Aufgabe ist die Konfiguration eines Minimalen Linux Kernels für die ARM Architektur, der mittels dem InitRamFS bootet und den Netzwerkzugriff erlaubt.
+Das System wird im QEMU Emulator getestet. Im nächsten Laborversuch wird dann auf Basis dieser Konfiguration das System für den Raspberry Pi erstellt.
+
+Wichtig ist, dass Sie wirklich ein Minimales System erstellen! Unter anderem werden Dateigröße sowie konfigurierte Parameter ausgewertet.
+
+## Folgende Themen werden erarbeitet:
+
+- Qemu Simulator
+- ARM Konfiguration
+- Console Umleitung
+- Busybox Konfiguration
+    - wie erstelle ich ein eigenes Root-FS mit busybox?
+- Netzwerkkonfiguration
+    - wie teste ich das Netzwerk in meinem Linux-System mit einem Emulator?
+- Netzwerk-App Erstellung
+
+
 # Kernel Source konfigurieren
 
 -  Wie müssen nun die ARCH und CROSS_COMPILE Variablen gesetzt werden?
