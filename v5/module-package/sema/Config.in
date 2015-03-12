@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SEMA
+		bool "semaphore and Spinlock"
+		help
+		  Semaphore and Spinlock Driver

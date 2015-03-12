@@ -1,0 +1,20 @@
+config BR2_PACKAGE_SYSO
+        bool "syso"
+        help
+          All Syso Packages
+
+
+
+if BR2_PACKAGE_SYSO
+        menu "Modules"
+                source package/syso/kernelThread/Config.in
+                source package/syso/mutex/Config.in
+                source package/syso/sema/Config.in
+                source package/syso/tasklet/Config.in
+                source package/syso/null/Config.in
+		source package/syso/timer/Config.in
+		source package/syso/workQueue/Config.in
+		source package/syso/access/Config.in
+		source package/syso/buffer/Config.in
+        endmenu
+endif

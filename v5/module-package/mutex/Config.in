@@ -1,0 +1,4 @@
+config BR2_PACKAGE_MUTEX
+		bool "mutex"
+		help
+		  Mutex Driver

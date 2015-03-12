@@ -1,0 +1,4 @@
+config BR2_PACKAGE_BUFFER
+		bool "buffer"
+		help
+		  Fifo Buffer
