@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LED250
+	bool "led250 test"
+	help
+	  Tests led with 250HZ for mygpio

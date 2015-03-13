@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LEDFLIP
+	bool "ledflip test"
+	help
+	  Tests ledflip for mygpio

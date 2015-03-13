@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LEDMAXSYS
+	bool "ledmaxSys"
+	help
+	  Tests max frequenz for mygpio with sys

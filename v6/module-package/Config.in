@@ -1,0 +1,16 @@
+config BR2_PACKAGE_SYSO
+        bool "syso"
+        help
+          All Syso Packages
+
+
+
+if BR2_PACKAGE_SYSO
+        menu "Modules"
+                source package/syso/mygpio/Config.in
+                source package/syso/ledmax/Config.in
+                source package/syso/led250/Config.in
+                source package/syso/ledflip/Config.in
+                source package/syso/ledmaxSys/Config.in
+        endmenu
+endif
